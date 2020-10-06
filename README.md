@@ -4,8 +4,11 @@
 
 **Figure 1.** The proposed dynamic graph learning framework. The iterative graph neural network backbone takes a set of part point clouds as inputs and conducts 5 iterations of graph message-passing for coarse-to-fine part assembly refinements. The graph dynamics is encoded into two folds, (a) reasoning the part relation (graph structure) from the part pose estimation, which in turn also evolves from the updated part relations, and (b) alternatively updating the node set by aggregating all the geometrically-equivalent parts (the red and purple nodes), e.g. two chair arms, into a single node (the yellow node) to perform graph learning on a sparse node set for even time steps, and unpooling these nodes to the dense node set for odd time steps. Note the semi-transparent nodes and edges are not included in graph learning of certain time steps.
 
-![image2](./images/image2.png)
+![image3](./images/image3.png)
+**Figure 2.** Dynamically evolving part relation weights among four common chair part types. The orange cells highlight the four directed edges with the maximal learned relation weight in the matrix, while the yellow cells indicate the minimal ones. The vertical axis denotes the emitting parts, and the horizontal axis denotes the receiving parts. We see clearly similar statistical patterns for the even iterations and for the odd ones. On average, the central parts have bigger emitting relation weights than the peripheral parts, indicating that the central parts guide the assembly process more.
 
+![image2](./images/image2.png)
+**Figure 3.** Our model implicitly learns to refine the pose estimation of each input part point cloud in a coarse to fine manner. The poses for the central parts are firstly determined and then the peripheral parts gradually adjust their poses to match the central parts.  The central parts guide the assembly process more. 
 
 
 
@@ -40,12 +43,12 @@ This repository provides data and code as follows.
         partnet_dataset/		# you need this dataset only if you  want to remake the prepared data
     prepare_data/				# contains prepared data you need in our exps 
     							# and codes to generate data
-    	Chair.test.npy			# test data list for Chair
+    	Chair.test.npy			# test data list for Chair (please download the .npy files using the link below)
     	Chair.val.npy			# val data list for Chair
     	Chair.train.npy 		# train data list for Chair
     	...
-    	shape_data/				# prepared data
-    	contact_point/			# prepared data for contact points
+    	prepare_shape.py/				# prepared data
+    	prepare_contact_points.py/			# prepared data for contact points
     	
     exps/
     	utils/					# something useful
@@ -102,7 +105,6 @@ MIT License
 
 ## TODOs
 
-* Release prepared data
 * Release pretrained model
 
 Please request in Github Issue for more code to release.
