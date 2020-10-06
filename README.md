@@ -96,7 +96,9 @@ Simply run
 ## To test the model
 
 modify the path of the model in the test_dynamic.sh file
+
 run
+
         cd exps/dynamic_graph_learning/scripts/
         ./test_dynamic.sh
 
