@@ -1,5 +1,3 @@
-# Generative-3D-Part-Assembly-via-Dynamic-Graph-Learning
-NeurIPS 2020
 # Generative 3D Part Assembly via Dynamic Graph Learning
 
 ![imgae1](./images/image1.png)
