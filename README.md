@@ -1,7 +1,7 @@
 # Generative 3D Part Assembly via Dynamic Graph Learning
 
 This is the implementation of NeurIPS 2020 paper "Generative 3D Part Assembly via Dynamic Graph Learning" created by 
-Jialei Huang*, Guanqi Zhan*, <a href="https://fqnchina.github.io/" target="_blank">Qingnan Fan</a>, <a href="https://cs.stanford.edu/~kaichun/" target="_blank">Kaichun Mo</a>, <a href="https://linsats.github.io/" target="_blank">Lin Shao</a>, <a href="https://cfcs.pku.edu.cn/baoquan/" target="_blank">Baoquan Chen</a>, <a href="https://geometry.stanford.edu/member/guibas/index.html" target="_blank">Leonidas Guibas</a> and <a href="https://zsdonghao.github.io/" target="_blank">Hao Dong</a>.
+Jialei Huang*, <a href="https://scholar.google.com/citations?user=f_m4WJIAAAAJ&hl=en" target="_blank">Guanqi Zhan*</a>, <a href="https://fqnchina.github.io/" target="_blank">Qingnan Fan</a>, <a href="https://cs.stanford.edu/~kaichun/" target="_blank">Kaichun Mo</a>, <a href="https://linsats.github.io/" target="_blank">Lin Shao</a>, <a href="https://cfcs.pku.edu.cn/baoquan/" target="_blank">Baoquan Chen</a>, <a href="https://geometry.stanford.edu/member/guibas/index.html" target="_blank">Leonidas Guibas</a> and <a href="https://zsdonghao.github.io/" target="_blank">Hao Dong</a>.
 
 ![image1](./images/image1.png)
 
@@ -57,7 +57,7 @@ This repository provides data and code as follows.
 
 This code has been tested on Ubuntu 16.04 with Cuda 10.0.130, GCC 7.5.0, Python 3.7.6 and PyTorch 1.1.0. 
 
-Download the [pre-processed data](https://drive.google.com/drive/folders/1bmTaeIN2x7dqgQZCuTsiXaAGRZqEeSMP?usp=sharing) for the .npy data files in file prepare_data/
+Download the [pre-processed data](https://pan.baidu.com/s/1nQV1djeuIfWiQBQS5N5ygw) (key: duqr) for the .npy data files in file prepare_data/
 
 
 ## Dependencies
