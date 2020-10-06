@@ -67,7 +67,7 @@ This repository provides data and code as follows.
 
 This code has been tested on Ubuntu 16.04 with Cuda 10.0.130, GCC 7.5.0, Python 3.7.6 and PyTorch 1.1.0. 
 
-Download the [pre-processed data] for the .npy data files in file prepare_data/
+Download the [pre-processed data](https://drive.google.com/drive/folders/1bmTaeIN2x7dqgQZCuTsiXaAGRZqEeSMP?usp=sharing) for the .npy data files in file prepare_data/
 
 
 ## Dependencies
@@ -81,7 +81,7 @@ to install the dependencies.
 
 ## Quick Start
 
-Download [pretrained models](##todo) and unzip under the root directory.
+Download [pretrained models](https://drive.google.com/drive/folders/1bmTaeIN2x7dqgQZCuTsiXaAGRZqEeSMP?usp=sharing) and unzip under the root directory.
 
 ## To train the model
 
@@ -108,10 +108,6 @@ Please post issues for questions and more helps on this Github repo page. We enc
 MIT License
 
 ## Updates
-
-## TODOs
-
-* Release pretrained model
 
 Please request in Github Issue for more code to release.
 
