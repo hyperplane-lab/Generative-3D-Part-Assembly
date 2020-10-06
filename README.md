@@ -67,11 +67,8 @@ This repository provides data and code as follows.
 
 This code has been tested on Ubuntu 16.04 with Cuda 10.0.130, GCC 7.5.0, Python 3.7.6 and PyTorch 1.1.0. 
 
-Please fill in [this form](##todo) to download the necessary data.
+Download the [pre-processed data] for the .npy data files in file prepare_data/
 
-```
-   	# to be released soon
-```
 
 ## Dependencies
 
