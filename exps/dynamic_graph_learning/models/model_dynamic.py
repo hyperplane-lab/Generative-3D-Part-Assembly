@@ -36,6 +36,8 @@ from cd.chamfer import chamfer_distance
 from quaternion import qrot
 import ipdb
 from scipy.optimize import linear_sum_assignment
+sys.path.append(os.path.join(BASE_DIR, '../../exp_GAN/models/sampling'))
+#from sampling import furthest_point_sample
 
 
 
@@ -85,6 +87,10 @@ class MLP3(nn.Module):
         self.conv2 = nn.Conv1d(512, 512, 1)
         self.conv3 = nn.Conv1d(512, feat_len, 1)
 
+        #self.mlp1 = nn.Linear(2*feat_len, 512)
+        #self.mlp2 = nn.Linear(512, 512)
+        #self.mlp3 = nn.Linear(512, feat_len)
+
         self.bn1 = nn.BatchNorm1d(512)
         self.bn2 = nn.BatchNorm1d(512)
         self.bn3 = nn.BatchNorm1d(feat_len)
@@ -100,7 +106,7 @@ class MLP3(nn.Module):
         #num_part = x.shape[1]
 
         x = x.permute(0, 2, 1)
-        #x = self.conv1(x)
+        # x = self.conv1(x)
         x = torch.relu(self.bn1(self.conv1(x)))
         x = torch.relu(self.bn2(self.conv2(x)))
         x = torch.relu(self.bn3(self.conv3(x)))
@@ -117,15 +123,19 @@ class MLP4(nn.Module):
         self.conv2 = nn.Conv1d(512, 512, 1)
         self.conv3 = nn.Conv1d(512, feat_len, 1)
 
+        #self.mlp1 = nn.Linear(2*feat_len, 512)
+        #self.mlp2 = nn.Linear(512, 512)
+        #self.mlp3 = nn.Linear(512, feat_len)
+
         self.bn1 = nn.BatchNorm1d(512)
         self.bn2 = nn.BatchNorm1d(512)
         self.bn3 = nn.BatchNorm1d(feat_len)
 
-        # self.mlp1 = nn.Linear(512 + 512, feat_len)
+        #self.mlp1 = nn.Linear(512 + 512, feat_len)
 
     """
-        Input: B x P x (F + F)
-        Output: B x P x F
+        Input: (B x P) x P x 2F
+        Output: (B x P) x P x F
     """
 
     def forward(self, x):
@@ -138,6 +148,7 @@ class MLP4(nn.Module):
         x = x.permute(0, 2, 1)
 
         return x
+
 
 class GRU(nn.Module):
     def __init__(self, feat_len, num_layer):
@@ -220,20 +231,18 @@ class Network(nn.Module):
     def __init__(self, conf):
         super(Network, self).__init__()
         self.conf = conf
-        self.num_GRU_layer = 1
         self.mlp2 = MLP2(conf.feat_len)
-        # self.mlp3 = MLP3(conf.feat_len)
         self.mlp3_1 = MLP3(conf.feat_len)
         self.mlp3_2 = MLP3(conf.feat_len)
         self.mlp3_3 = MLP3(conf.feat_len)
         self.mlp3_4 = MLP3(conf.feat_len)
         self.mlp3_5 = MLP3(conf.feat_len)
 
-        self.mlp4_1 = GRU(conf.feat_len, self.num_GRU_layer)
-        self.mlp4_2 = GRU(conf.feat_len, self.num_GRU_layer)
-        self.mlp4_3 = GRU(conf.feat_len, self.num_GRU_layer)
-        self.mlp4_4 = GRU(conf.feat_len, self.num_GRU_layer)
-        self.mlp4_5 = GRU(conf.feat_len, self.num_GRU_layer)
+        self.mlp4_1 = MLP4(conf.feat_len) 
+        self.mlp4_2 = MLP4(conf.feat_len) 
+        self.mlp4_3 = MLP4(conf.feat_len) 
+        self.mlp4_4 = MLP4(conf.feat_len) 
+        self.mlp4_5 = MLP4(conf.feat_len) 
 
         self.mlp5_1 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
         self.mlp5_2 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
@@ -259,7 +268,6 @@ class Network(nn.Module):
         # obtain per-part feature
         part_feats = self.mlp2(part_pcs.view(batch_size * num_part, -1, 3)).view(batch_size, num_part, -1)  # output: B x P x F
         local_feats = part_feats
-        h = torch.zeros(self.num_GRU_layer, batch_size * num_part, self.conf.feat_len).to(self.conf.device)
         random_noise = np.random.normal(loc=0.0, scale=1.0, size=[batch_size, num_part, 16]).astype(
             np.float32)  # B x P x 16
         random_noise = torch.tensor(random_noise).to(self.conf.device)  # B x P x 16
@@ -328,7 +336,7 @@ class Network(nn.Module):
 
             # mlp4
             input_4 = torch.cat([normed_part_message.double(), part_feats.double()], dim=-1) # B x P x 2F
-            part_feats, _ = mlp4(input_4.float(), h) # B x P x F
+            part_feats= mlp4(input_4.float()) # B x P x F
             
             # mlp5
             input_5 = torch.cat([local_feats, part_feats.float(), instance_label, pred_poses, random_noise],dim=-1)
@@ -431,7 +439,7 @@ class Network(nn.Module):
         dist1, dist2 = chamfer_distance(pts1.view(-1, num_point, 3), pts2.view(-1, num_point, 3), transpose=False)
         loss_per_data = torch.mean(dist1, dim=1) + torch.mean(dist2, dim=1)
         loss_per_data = loss_per_data.view(batch_size, -1)
-
+        
         thre = 0.01
         loss_per_data = loss_per_data.to(device)
         acc = [[0 for i in range(num_part)]for j in range(batch_size)]
@@ -462,7 +470,9 @@ class Network(nn.Module):
         loss_per_data = loss_per_data.to(device)
         return loss_per_data
 
-
+        """
+            output : B
+        """
     def get_sym_point(self, point, x, y, z):
 
         if x:
@@ -574,3 +584,4 @@ class Network(nn.Module):
 
         #print(count, total_num)
         return contact_point_loss, count, total_num
+

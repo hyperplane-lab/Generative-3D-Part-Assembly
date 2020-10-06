@@ -2,7 +2,7 @@ cd ..
 source activate PartAssembly
 CUDA_VISIBLE_DEVICES=1 python ./train_dynamic.py  \
     --exp_suffix '_all' \
-    --model_version 'model_dynamic_mlp' \
+    --model_version 'model_dynamic' \
     --category 'Chair' \
     --train_data_fn 'Chair.train.npy' \
     --val_data_fn 'Chair.val.npy' \
