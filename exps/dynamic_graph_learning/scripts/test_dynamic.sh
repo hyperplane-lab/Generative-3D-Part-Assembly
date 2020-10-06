@@ -1,0 +1,111 @@
+cd .. 
+CUDA_VISIBLE_DEVICES=3 python ./test_dynamic.py  \
+    --exp_suffix '' \
+    --model_version 'model_dynamic_mlp' \
+    --category 'Table' \
+    --train_data_fn 'Table.train.npy' \
+    --val_data_fn "Table.val.npy" \
+    --device cuda:0 \
+    --model_dir "/home/wuruihai/PartAssembly_to_release/exps/dynamic_graph_learning/logs/exp-Table-model_dynamic_mlp-level3_all/ckpts/170_net_network.pth" \
+    --level 3 \
+    --batch_size 4 \
+    --num_batch_every_visu 0 
+CUDA_VISIBLE_DEVICES=3 python ./test_dynamic.py  \
+    --exp_suffix '' \
+    --model_version 'model_dynamic_mlp' \
+    --category 'Table' \
+    --train_data_fn 'Table.train.npy' \
+    --val_data_fn "Table.val.npy" \
+    --device cuda:0 \
+    --model_dir "/home/wuruihai/PartAssembly_to_release/exps/dynamic_graph_learning/logs/exp-Table-model_dynamic_mlp-level3_all/ckpts/171_net_network.pth" \
+    --level 3 \
+    --batch_size 4 \
+    --num_batch_every_visu 0 
+CUDA_VISIBLE_DEVICES=3 python ./test_dynamic.py  \
+    --exp_suffix '' \
+    --model_version 'model_dynamic_mlp' \
+    --category 'Table' \
+    --train_data_fn 'Table.train.npy' \
+    --val_data_fn "Table.val.npy" \
+    --device cuda:0 \
+    --model_dir "/home/wuruihai/PartAssembly_to_release/exps/dynamic_graph_learning/logs/exp-Table-model_dynamic_mlp-level3_all/ckpts/172_net_network.pth" \
+    --level 3 \
+    --batch_size 4 \
+    --num_batch_every_visu 0 
+CUDA_VISIBLE_DEVICES=3 python ./test_dynamic.py  \
+    --exp_suffix '' \
+    --model_version 'model_dynamic_mlp' \
+    --category 'Table' \
+    --train_data_fn 'Table.train.npy' \
+    --val_data_fn "Table.val.npy" \
+    --device cuda:0 \
+    --model_dir "/home/wuruihai/PartAssembly_to_release/exps/dynamic_graph_learning/logs/exp-Table-model_dynamic_mlp-level3_all/ckpts/173_net_network.pth" \
+    --level 3 \
+    --batch_size 4 \
+    --num_batch_every_visu 0 
+CUDA_VISIBLE_DEVICES=3 python ./test_dynamic.py  \
+    --exp_suffix '' \
+    --model_version 'model_dynamic_mlp' \
+    --category 'Table' \
+    --train_data_fn 'Table.train.npy' \
+    --val_data_fn "Table.val.npy" \
+    --device cuda:0 \
+    --model_dir "/home/wuruihai/PartAssembly_to_release/exps/dynamic_graph_learning/logs/exp-Table-model_dynamic_mlp-level3_all/ckpts/174_net_network.pth" \
+    --level 3 \
+    --batch_size 4 \
+    --num_batch_every_visu 0 
+CUDA_VISIBLE_DEVICES=3 python ./test_dynamic.py  \
+    --exp_suffix '' \
+    --model_version 'model_dynamic_mlp' \
+    --category 'Table' \
+    --train_data_fn 'Table.train.npy' \
+    --val_data_fn "Table.val.npy" \
+    --device cuda:0 \
+    --model_dir "/home/wuruihai/PartAssembly_to_release/exps/dynamic_graph_learning/logs/exp-Table-model_dynamic_mlp-level3_all/ckpts/175_net_network.pth" \
+    --level 3 \
+    --batch_size 4 \
+    --num_batch_every_visu 0 
+CUDA_VISIBLE_DEVICES=3 python ./test_dynamic.py  \
+    --exp_suffix '' \
+    --model_version 'model_dynamic_mlp' \
+    --category 'Table' \
+    --train_data_fn 'Table.train.npy' \
+    --val_data_fn "Table.val.npy" \
+    --device cuda:0 \
+    --model_dir "/home/wuruihai/PartAssembly_to_release/exps/dynamic_graph_learning/logs/exp-Table-model_dynamic_mlp-level3_all/ckpts/176_net_network.pth" \
+    --level 3 \
+    --batch_size 4 \
+    --num_batch_every_visu 0 
+CUDA_VISIBLE_DEVICES=3 python ./test_dynamic.py  \
+    --exp_suffix '' \
+    --model_version 'model_dynamic_mlp' \
+    --category 'Table' \
+    --train_data_fn 'Table.train.npy' \
+    --val_data_fn "Table.val.npy" \
+    --device cuda:0 \
+    --model_dir "/home/wuruihai/PartAssembly_to_release/exps/dynamic_graph_learning/logs/exp-Table-model_dynamic_mlp-level3_all/ckpts/177_net_network.pth" \
+    --level 3 \
+    --batch_size 4 \
+    --num_batch_every_visu 0 
+CUDA_VISIBLE_DEVICES=3 python ./test_dynamic.py  \
+    --exp_suffix '' \
+    --model_version 'model_dynamic_mlp' \
+    --category 'Table' \
+    --train_data_fn 'Table.train.npy' \
+    --val_data_fn "Table.val.npy" \
+    --device cuda:0 \
+    --model_dir "/home/wuruihai/PartAssembly_to_release/exps/dynamic_graph_learning/logs/exp-Table-model_dynamic_mlp-level3_all/ckpts/178_net_network.pth" \
+    --level 3 \
+    --batch_size 4 \
+    --num_batch_every_visu 0 
+CUDA_VISIBLE_DEVICES=3 python ./test_dynamic.py  \
+    --exp_suffix '' \
+    --model_version 'model_dynamic_mlp' \
+    --category 'Table' \
+    --train_data_fn 'Table.train.npy' \
+    --val_data_fn "Table.val.npy" \
+    --device cuda:0 \
+    --model_dir "/home/wuruihai/PartAssembly_to_release/exps/dynamic_graph_learning/logs/exp-Table-model_dynamic_mlp-level3_all/ckpts/179_net_network.pth" \
+    --level 3 \
+    --batch_size 4 \
+    --num_batch_every_visu 0 

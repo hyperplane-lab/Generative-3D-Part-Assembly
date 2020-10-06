@@ -1,0 +1,12 @@
+newmtl f0
+Kd 1 0 0
+newmtl f1
+Kd 0 1 0
+newmtl f2
+Kd 0 0 1
+newmtl f3
+Kd 1 1 0
+newmtl f4
+Kd 0 1 1
+newmtl f5
+Kd 1 0 1
