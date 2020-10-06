@@ -19,6 +19,8 @@ Autonomous part assembly is a challenging yet crucial task in 3D computer vision
 
 ## About the paper
 
+Accepted at NeurIPS 2020
+
 Arxiv Version: https://arxiv.org/pdf/2006.07793.pdf
 
 
