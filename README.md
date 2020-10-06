@@ -26,10 +26,10 @@ Arxiv Version: https://arxiv.org/pdf/2006.07793.pdf
 ## Citations
 
 
-    @InProceedings{Huang2020NIPS,
-        author = {Huang, Jialei and Zhan, Guanqi and Fan, Qingnan and Mo, Kaichun and Shao, Lin and Chen, Baoquan and Guibas, Leonidas J. and Dong, Hao},
+    @InProceedings{HuangZhan2020PartAssembly,
+        author = {Huang, Jialei and Zhan, Guanqi and Fan, Qingnan and Mo, Kaichun and Shao, Lin and Chen, Baoquan and Guibas, Leonidas and Dong, Hao},
         title = {Generative 3D Part Assembly via Dynamic Graph Learning},
-        booktitle = {The IEEE Conference on Neural Information Processing Systems (NIPS)},
+        booktitle = {The IEEE Conference on Neural Information Processing Systems (NeurIPS)},
         year = {2020}
     }
 
