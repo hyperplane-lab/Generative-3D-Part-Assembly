@@ -1,21 +1,13 @@
 # Generative 3D Part Assembly via Dynamic Graph Learning
 
-![imgae1](./images/image1.png)
+Autonomous part assembly is a challenging yet crucial task in 3D computer vision and robotics. Analogous to buying an IKEA furniture, given a set of 3D parts that can assemble a single shape, an intelligent agent needs to perceive the 3D part geometry, reason to propose pose estimations for the input parts, and finally call robotic planning and control routines for actuation. In this paper, we focus on the pose estimation subproblem from the vision side involving geometric and relational reasoning over the input part geometry. Essentially, the task of generative 3D part assembly is to predict a 6-DoF part pose, including a rigid rotation and translation, for each input part that assembles a single 3D shape as the final output. To tackle this problem, we propose an assembly-oriented dynamic graph learning framework that leverages an iterative graph neural network as a backbone. It explicitly conducts sequential part assembly refinements in a coarse-to-fine manner, exploits a pair of part relation reasoning module and part aggregation module for dynamically adjusting both part features and their relations in the part graph. We conduct extensive experiments and quantitative comparisons to three strong baseline methods, demonstrating the effectiveness of the proposed approach.
+
+![image1](./images/image1.png)
 
 **Figure 1.** The proposed dynamic graph learning framework. The iterative graph neural network backbone takes a set of part point clouds as inputs and conducts 5 iterations of graph message-passing for coarse-to-fine part assembly refinements. The graph dynamics is encoded into two folds, (a) reasoning the part relation (graph structure) from the part pose estimation, which in turn also evolves from the updated part relations, and (b) alternatively updating the node set by aggregating all the geometrically-equivalent parts (the red and purple nodes), e.g. two chair arms, into a single node (the yellow node) to perform graph learning on a sparse node set for even time steps, and unpooling these nodes to the dense node set for odd time steps. Note the semi-transparent nodes and edges are not included in graph learning of certain time steps.
 
-![image3](./images/image3.png)
-**Figure 2.** Dynamically evolving part relation weights among four common chair part types. The orange cells highlight the four directed edges with the maximal learned relation weight in the matrix, while the yellow cells indicate the minimal ones. The vertical axis denotes the emitting parts, and the horizontal axis denotes the receiving parts. We see clearly similar statistical patterns for the even iterations and for the odd ones. On average, the central parts have bigger emitting relation weights than the peripheral parts, indicating that the central parts guide the assembly process more.
-
 ![image2](./images/image2.png)
-**Figure 3.** Our model implicitly learns to refine the pose estimation of each input part point cloud in a coarse to fine manner. The poses for the central parts are firstly determined and then the peripheral parts gradually adjust their poses to match the central parts.  The central parts guide the assembly process more. 
-
-
-
-
-## Introduction
-
-Autonomous part assembly is a challenging yet crucial task in 3D computer vision and robotics. Analogous to buying an IKEA furniture, given a set of 3D parts that can assemble a single shape, an intelligent agent needs to perceive the 3D part geometry, reason to propose pose estimations for the input parts, and finally call robotic planning and control routines for actuation. In this paper, we focus on the pose estimation subproblem from the vision side involving geometric and relational reasoning over the input part geometry. Essentially, the task of generative 3D part assembly is to predict a 6-DoF part pose, including a rigid rotation and translation, for each input part that assembles a single 3D shape as the final output. To tackle this problem, we propose an assembly-oriented dynamic graph learning framework that leverages an iterative graph neural network as a backbone. It explicitly conducts sequential part assembly refinements in a coarse-to-fine manner, exploits a pair of part relation reasoning module and part aggregation module for dynamically adjusting both part features and their relations in the part graph. We conduct extensive experiments and quantitative comparisons to three strong baseline methods, demonstrating the effectiveness of the proposed approach.
+**Figure 2.** Our model implicitly learns to refine the pose estimation of each input part point cloud in a coarse to fine manner. The poses for the central parts are firstly determined and then the peripheral parts gradually adjust their poses to match the central parts.  The central parts guide the assembly process more. 
 
 ## About the paper
 
@@ -108,9 +100,6 @@ Please post issues for questions and more helps on this Github repo page. We enc
 ## License
 
 MIT License
-
-## Updates
-
 
 ## Todos
 1. Release pretrained models
