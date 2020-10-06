@@ -57,7 +57,7 @@ This repository provides data and code as follows.
 
 This code has been tested on Ubuntu 16.04 with Cuda 10.0.130, GCC 7.5.0, Python 3.7.6 and PyTorch 1.1.0. 
 
-Download the [pre-processed data](https://pan.baidu.com/s/1nQV1djeuIfWiQBQS5N5ygw) (key: duqr) for the .npy data files in file prepare_data/
+Download the [pre-processed data](http://download.cs.stanford.edu/orion/genpartass/prepare_data.zip) for the .npy data files in file prepare_data/
 
 
 ## Dependencies
