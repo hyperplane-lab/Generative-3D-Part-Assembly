@@ -1,0 +1,349 @@
+
+
+@import url(http://fonts.googleapis.com/css?family=EB+Garamond|Fanwood+Text:400italic|Open+Sans:300,400);
+
+.center{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.pageSubTitle{
+	font-family: 'Times New Roman', serif;
+	font-size: 20;
+}
+
+.pageSubTitle{
+	margin-top: 10px;
+	font-family: 'Times New Roman', serif;
+	font-size: 20;
+	text-align: center;
+}
+.pageTitle{
+	margin-top: 20px;
+	font-family: 'Times New Roman', serif;
+	font-size: 35;
+	max-width: 800px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.pageTitle2{
+	margin-top: 40px;
+	font-family: 'Fanwood Text', serif;
+	font-size: 40;
+	text-align: center;
+}
+
+.linkBarUpBackground{
+	height: 30px;
+	width: 1000px;
+	background-color: #EBEBEB;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	border-color: #BDBDBD;
+}
+
+.linkBarDownBackground{
+	margin-top: 100px;
+	width: 1000px;
+	height:30px;
+	background-color: #EBEBEB;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	border-color: #BDBDBD;
+}
+
+.linkBar{
+	font-family: 'Times New Roman', serif;
+	font-size: 20;
+	font-weight: 300;
+	height: 30px;
+	margin-left:100px;
+	margin-top: 2px;
+}
+
+.bibtex{
+
+	margin-top: 10px;
+	margin-left: 0px;
+	width : 600px;
+	font-size: 15;
+	white-space: pre-line;	
+}
+
+.profileBody{
+	margin-top: 50px;
+	margin-left: 100px;
+	text-align: justify;
+	width: 700px;
+	height: 150px;
+}
+
+.profileImage{
+	float: right;
+	width: 180px;
+	
+}
+
+.profileText{
+	font-family: 'Times New Roman', serif;
+	font-size: 16;
+	text-align: justify;
+	width: 700px;
+}
+
+.paratext{
+	font-family: 'Times New Roman', serif;
+	font-size: 16;
+	text-align: justify;	
+}
+
+.paratextcenter{
+	font-family: 'Times New Roman', serif;
+	font-size: 20;
+	text-align: center;	
+}
+
+.paratextright{
+	font-family: 'Times New Roman', serif;
+	font-size: 16;
+	text-align: justify;
+	float:right;	
+}
+
+.leftpage{
+	margin-top: 20px;
+	width:340px;
+	background-color:  #EBEBEB;
+}
+
+.rightpage{
+	margin-top: 20px;
+	position: absolute;
+	margin-left: 360px;
+	width :340px;
+	background-color:  #EBEBEB;
+}
+
+.paraquote{
+	font-family: 'Fanwood Text';
+	font-style: italic;
+	font-weight:'400';
+	font-size: 16;
+	text-align: justify;
+}
+
+.quote{
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	background-color: #EBEBE5;
+}
+
+.pagebodyhalf{
+	margin-top: 130px;
+	margin-left: 100px;
+	margin-bottom: 50px;
+	width: 700px;
+	
+}
+
+.projectBody{
+	margin-bottom: 50px;
+	width: 700px;
+
+}
+
+.projectImage{
+	float: left;
+	width: 280px;
+}
+
+.bannerImage{
+	display:  block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 650px;
+	margin-top: 40px;
+}
+
+.collageImage{
+	display:  block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 240px;
+	margin-top: 0px;
+}
+
+.projectTitle{
+	margin-top: 20px;
+	margin-left: 320px;
+	font-family: 'Times New Roman', serif;
+	font-size: 18;
+}
+
+
+.projectAuthors{
+	margin-top: 2px;
+	margin-left: 320px;
+	font-family: 'Fanwood Text';
+	font-style: italic;
+	font-weight:'400';
+	font-size: 14;
+}
+
+.projectDesc{
+	margin-left: 430px;
+	margin-top: 20px;
+	font-family: 'Fanwood Text';
+	font-weight:'400';
+	font-size: 20;
+}
+
+
+.Authors{
+	margin-top: 0px;
+	margin-left: auto;
+	font-family: 'Fanwood Text';
+	font-weight:'400';
+	font-size: 20;
+}
+
+.acks{
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'Fanwood Text', serif;
+	font-weight:'400';
+	font-size: 20;
+	text-align: justify;
+	max-width: 800;
+}
+
+.AuthorsTitle{
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2px;
+	font-family: 'Fanwood Text';
+	font-weight:'400';
+	font-size: 30;
+	font-weight: bold;
+}
+
+.abstractTitle{
+	margin-top: 30px;
+	margin-left:auto;
+	font-family: 'Fanwood Text', serif;
+	font-size: 25;
+	text-align: center;
+	font-weight: bold;
+}
+
+.ackTitle{
+	margin-top: 40px;
+	margin-left:auto;
+	font-family: 'Fanwood Text', serif;
+	font-size: 25;
+	text-align: center;
+	font-weight: bold;
+}
+
+.abstractText{
+	margin-top: 30px;
+	font-family: 'Times New Roman', serif;
+	font-size: 18;
+	text-align: justify;
+	max-width: 800;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.figureTitleText{
+	margin-top: 0px;
+	font-family: 'Times New Roman', serif;
+	font-size: 18;
+	text-align: justify;
+	max-width: 700;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.footNoteText{
+	margin-top: 40px;
+	font-family: 'Times New Roman', serif;
+	font-size: 16;
+	text-align: justify;
+	max-width: 800;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ackText{
+	margin-top: 20px;
+	font-family: 'Times New Roman', serif;
+	font-size: 18;
+	text-align: justify;
+	max-width: 800;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.material{
+	margin-top: 10px;
+	font-family: 'Times New Roman', serif;
+	font-size: 20;
+	text-align: center;
+	max-width: 800;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.projectText{
+	margin-top: 2px;
+	margin-left: 320px;
+	font-family:  serif;
+	font-size: 14;
+}
+
+.video{
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	
+}
+
+.pagebodyfull{
+	margin-top: 50px;
+	font-size: 14;
+	margin-left: 100px;
+	margin-bottom: 50px;
+	text-align: justify;
+	width: 700px;	
+}
+
+.footer{
+	font-family: 'Times New Roman', serif;
+	font-size: 12;
+	height: 30px;
+	margin-left:100px;
+	margin-top: 6px;
+}
+
+a{
+	text-decoration:none	
+}
+
+.inline{
+	margin-right:10px;
+}
+
+a:link { color: rgb(0, 0, 200) } 
+a:hover { color: rgb(200, 0, 0) } 
+a:active { color: rgb(255, 0, 102) } 
+a:visited{color: rgb(0, 0, 100)}
