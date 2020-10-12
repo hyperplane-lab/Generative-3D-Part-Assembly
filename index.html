@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Generative 3D Part Assembly via Dynamic Graph Learning</title>
+<link rel="SHORTCUT ICON" href="favicon.ico"/>
+<link href='css/paperstyle.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+<div class="pageTitle">
+    Generative 3D Part Assembly via <br>Dynamic Graph Learning
+  <br>
+  <br>
+  <span class = "Authors">
+      <a href="https://jialeihuang.github.io/" target="_blank">Jialei Huang<sup>1*</sup> &nbsp; &nbsp;
+      <a href="https://championchess.github.io/" target="_blank">Guanqi Zhan<sup>1*</sup> &nbsp; &nbsp;
+      <a href="https://fqnchina.github.io/" target="_blank">Qingnan Fan</a><sup>2</sup> &nbsp; &nbsp;
+      <a href="http://cs.stanford.edu/~kaichun" target="_blank">Kaichun Mo</a><sup>2</sup> &nbsp; &nbsp;<br>
+      <a href="https://linsats.github.io/" target="_blank">Lin Shao</a><sup>2</sup> &nbsp; &nbsp;
+      <a href="https://cfcs.pku.edu.cn/baoquan/" target="_blank">Baoquan Chen</a><sup>1</sup> &nbsp; &nbsp;
+      <a href="https://geometry.stanford.edu/member/guibas/" target="_blank">Leonidas J. Guibas</a><sup>2</sup>
+      <a href="https://zsdonghao.github.io/" target="_blank">Hao Dong</a><sup>1</sup> &nbsp; &nbsp;<br>
+      <i>(*: indicates joint first authors)</i><br><br>
+      <sup>1</sup><a href = "http://english.pku.edu.cn/" target="_blank"> Peking University </a> &nbsp; &nbsp;
+      <sup>2</sup><a href = "http://www.stanford.edu/" target="_blank"> Stanford University </a> &nbsp; &nbsp;<br><br>
+      <a href="https://nips.cc/Conferences/2020/" target="_blank"><i>Thirty-fourth Conference on Neural Information Processing Systems (NeurIPS) 2020</i></a>
+  </span>
+  </div>
+<br>
+<div class = "material">
+        <a href="https://arxiv.org/abs/2006.07793" target="_blank">[ArXiv Preprint]</a>
+        <a href="https://github.com/Championchess/Generative-3D-Part-Assembly" target="_blank">[Code]</a> 
+        <a href="paper.bib" target="_blank">[BibTex]</a> 
+</div>
+
+<div class = "abstractTitle">
+  Abstract
+  </div>
+  <p class = "abstractText">
+  Autonomous part assembly is a challenging yet crucial task in 3D computer vision and robotics. Analogous to buying an IKEA furniture, given a set of 3D parts that can assemble a single shape, an intelligent agent needs to perceive the 3D part geometry, reason to propose pose estimations for the input parts, and finally call robotic planning and control routines for actuation. In this paper, we focus on the pose estimation subproblem from the vision side involving geometric and relational reasoning over the input part geometry. Essentially, the task of generative 3D part assembly is to predict a 6-DoF part pose, including a rigid rotation and translation, for each input part that assembles a single 3D shape as the final output. To tackle this problem, we propose an assembly-oriented dynamic graph learning framework that leverages an iterative graph neural network as a backbone. It explicitly conducts sequential part assembly refinements in a coarse-to-fine manner, exploits a pair of part relation reasoning module and part aggregation module for dynamically adjusting both part features and their relations in the part graph. We conduct extensive experiments and quantitative comparisons to three strong baseline methods, demonstrating the effectiveness of the proposed approach.
+</p>
+
+<div class="abstractTitle">
+    Coarse-to-Fine Assembly
+</div>
+  <img class = "bannerImage" src="images/c2f.png", width="800"><br>
+  <table width="800" align="center"><tr><td><p class = "figureTitleText">
+              Figure 1. <b>Coarse-to-Fine Part Assembly.</b> 
+              Our iterative part assembly network learns to assemble parts to a shape in a coarse-to-fine manner.
+  </p></td></tr></table>
+
+
+<div class="abstractTitle">
+    Network Architecture
+</div>
+  <img class = "bannerImage" src="images/network.png", width="800"><br>
+  <table width="800" align="center"><tr><td><p class = "figureTitleText">
+              Figure 2. <b>Network Architecture.</b> 
+              The proposed dynamic graph learning framework. The iterative graph neural network backbone takes a set of part point clouds as inputs and conducts 5 iterations of graph message-passing for coarse-to-fine part assembly refinements.
+  </p></td></tr></table>
+
+
+<div class="abstractTitle">
+    Qualitative Results.
+</div>
+  <img class = "bannerImage" src="images/result.png", width="800"><br>
+  <table width="800" align="center"><tr><td><p class = "figureTitleText">
+              Figure 3. <b>Qualitative Comparisons to Baseline Methods.</b> 
+              Visual comparisons between our algorithm and the baseline methods.
+  </p></td></tr></table>
+
+
+<div class="abstractTitle">
+    Quantitative Comparisons.
+</div>
+  <img class = "bannerImage" src="images/table.png", width="800"><br>
+  <table width="800" align="center"><tr><td><p class = "figureTitleText">
+              Figure 4. <b>Quantitative Comparisons to Baseline Methods.</b> 
+              We show quantitative comparisons between our algorithm and the baseline methods.
+  </p></td></tr></table>
+
+  <div class = "abstractTitle">
+  Acknowledgements
+  </div>
+  <p class = "abstractText">
+This work was supported by the start-up research funds from Peking University (7100602564) and the Center on Frontiers of Computing Studies (7100602567). We would also like to thank Imperial Institute of Advanced Technology for GPU supports.
+</p>
+
+
+
+</p></td></tr></table>
+</body></html>
