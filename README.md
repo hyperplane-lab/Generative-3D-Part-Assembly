@@ -66,6 +66,9 @@ Please run
     
 
         conda env create -f environment.yaml
+        . activate PartAssembly
+        cd exps/utils/cd
+        python setup.py build
 
 to install the dependencies.
 
