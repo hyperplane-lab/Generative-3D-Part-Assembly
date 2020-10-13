@@ -74,7 +74,7 @@ to install the dependencies.
 
 ## Quick Start
 
-Download [pretrained models](https://drive.google.com/drive/folders/1bmTaeIN2x7dqgQZCuTsiXaAGRZqEeSMP?usp=sharing) and unzip under the root directory.
+Download [pretrained models](http://download.cs.stanford.edu/orion/genpartass/checkpoints.zip) and unzip under the root directory.
 
 ## To train the model
 
@@ -101,7 +101,6 @@ Please post issues for questions and more helps on this Github repo page. We enc
 MIT License
 
 ## Todos
-1. Release pretrained models
 
 Please request in Github Issue for more code to release.
 
