@@ -11,7 +11,7 @@ The proposed dynamic graph learning framework. The iterative graph neural networ
 - [project page](https://hyperplane-lab.github.io/Generative-3D-Part-Assembly/)
 
 
-## About this repository
+## File Structure
 
 This repository provides data and code as follows.
 
@@ -64,14 +64,14 @@ to install the dependencies.
 
 Download [pretrained models](http://download.cs.stanford.edu/orion/genpartass/checkpoints.zip) and unzip under the root directory.
 
-## To train the model
+### Train the model
 
 Simply run
 
         cd exps/dynamic_graph_learning/scripts/
         ./train_dynamic.sh
         
-## To test the model
+### Test the model
 
 modify the path of the model in the test_dynamic.sh file
 
@@ -84,7 +84,7 @@ run
 
 Please post issues for questions and more helps on this Github repo page. We encourage using Github issues instead of sending us emails since your questions may benefit others.
 
-## Authors
+## Maintainers
 @Championchess 
 @JialeiHuang
 
