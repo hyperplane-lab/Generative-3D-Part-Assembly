@@ -7,21 +7,9 @@ This is the implementation of NeurIPS 2020 paper "Generative 3D Part Assembly vi
 
 The proposed dynamic graph learning framework. The iterative graph neural network backbone takes a set of part point clouds as inputs and conducts 5 iterations of graph message-passing for coarse-to-fine part assembly refinements. The graph dynamics is encoded into two folds, (a) reasoning the part relation (graph structure) from the part pose estimation, which in turn also evolves from the updated part relations, and (b) alternatively updating the node set by aggregating all the geometrically-equivalent parts (the red and purple nodes), e.g. two chair arms, into a single node (the yellow node) to perform graph learning on a sparse node set for even time steps, and unpooling these nodes to the dense node set for odd time steps. Note the semi-transparent nodes and edges are not included in graph learning of certain time steps.
 
-## About the paper
+- [paper link](https://arxiv.org/pdf/2006.07793.pdf)
+- [project page](https://hyperplane-lab.github.io/Generative-3D-Part-Assembly/)
 
-Arxiv Version: https://arxiv.org/pdf/2006.07793.pdf
-
-
-
-## Citations
-
-
-    @InProceedings{HuangZhan2020PartAssembly,
-        author = {Huang, Jialei and Zhan, Guanqi and Fan, Qingnan and Mo, Kaichun and Shao, Lin and Chen, Baoquan and Guibas, Leonidas and Dong, Hao},
-        title = {Generative 3D Part Assembly via Dynamic Graph Learning},
-        booktitle = {The IEEE Conference on Neural Information Processing Systems (NeurIPS)},
-        year = {2020}
-    }
 
 ## About this repository
 
@@ -99,6 +87,16 @@ Please post issues for questions and more helps on this Github repo page. We enc
 ## Authors
 @Championchess 
 @JialeiHuang
+
+
+## Citation
+
+    @InProceedings{HuangZhan2020PartAssembly,
+        author = {Huang, Jialei and Zhan, Guanqi and Fan, Qingnan and Mo, Kaichun and Shao, Lin and Chen, Baoquan and Guibas, Leonidas and Dong, Hao},
+        title = {Generative 3D Part Assembly via Dynamic Graph Learning},
+        booktitle = {The IEEE Conference on Neural Information Processing Systems (NeurIPS)},
+        year = {2020}
+    }
 
 ## License
 
