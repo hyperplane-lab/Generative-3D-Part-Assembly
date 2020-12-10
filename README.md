@@ -25,7 +25,7 @@ This repository provides data and code as follows.
     	Chair.val.npy			# val data list for Chair
     	Chair.train.npy 		# train data list for Chair
     	...
-        prepare_shape.py/				    # prepared data
+        prepare_shape.py				    # prepared data
     	prepare_contact_points.py			# prepared data for contact points
     	
     exps/
