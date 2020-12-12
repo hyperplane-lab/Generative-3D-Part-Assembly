@@ -20,10 +20,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(BASE_DIR, '../utils'))
 from cd.chamfer import chamfer_distance
 from quaternion import qrot
-import ipdb
 from scipy.optimize import linear_sum_assignment
-sys.path.append(os.path.join(BASE_DIR, '../../exp_GAN/models/sampling'))
-#from sampling import furthest_point_sample
+import random
 
 
 
@@ -198,27 +196,9 @@ class Network(nn.Module):
         super(Network, self).__init__()
         self.conf = conf
         self.mlp2 = MLP2(conf.feat_len)
-        self.mlp3s = nn.ModuleList([MLP3(conf.feat_len) for i in range(5)])
-        self.mlp4s = nn.ModuleList([MLP4(conf.feat_len) for i in range(5)])
-        self.mlp5s = nn.ModuleList([MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16) for i in range(5)])
-        #self.mlp3_1 = MLP3(conf.feat_len)
-        #self.mlp3_2 = MLP3(conf.feat_len)
-        #self.mlp3_3 = MLP3(conf.feat_len)
-        #self.mlp3_4 = MLP3(conf.feat_len)
-        #self.mlp3_5 = MLP3(conf.feat_len)
-
-        #self.mlp4_1 = MLP4(conf.feat_len) 
-        #self.mlp4_2 = MLP4(conf.feat_len) 
-        #self.mlp4_3 = MLP4(conf.feat_len) 
-        #self.mlp4_4 = MLP4(conf.feat_len) 
-        #self.mlp4_5 = MLP4(conf.feat_len) 
-
-        #self.mlp5_1 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
-        #self.mlp5_2 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
-        #self.mlp5_3 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
-        #self.mlp5_4 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
-        #self.mlp5_5 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
-
+        self.mlp3s = nn.ModuleList([MLP3(conf.feat_len) for i in range(conf.iter)])
+        self.mlp4s = nn.ModuleList([MLP4(conf.feat_len) for i in range(conf.iter)])
+        self.mlp5s = nn.ModuleList([MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16) for i in range(conf.iter)])
         self.relation_predictor = R_Predictor()
         self.relation_predictor_dense = R_Predictor()
         self.pose_extractor = Pose_extractor()
@@ -275,28 +255,6 @@ class Network(nn.Module):
             mlp3 = self.mlp3s[iter_ind]
             mlp4 = self.mlp4s[iter_ind]
             mlp5 = self.mlp5s[iter_ind]
-            """
-            if iter_ind == 0:
-            #    mlp3 = self.mlp3_1
-                mlp4 = self.mlp4_1
-                mlp5 = self.mlp5_1
-            elif iter_ind == 1:
-            #    mlp3 = self.mlp3_2
-                mlp4 = self.mlp4_2
-                mlp5 = self.mlp5_2
-            elif iter_ind == 2:
-            #    mlp3 = self.mlp3_3
-                mlp4 = self.mlp4_3
-                mlp5 = self.mlp5_3
-            elif iter_ind == 3:
-            #    mlp3 = self.mlp3_4
-                mlp4 = self.mlp4_4
-                mlp5 = self.mlp5_4
-            elif iter_ind == 4:
-            #    mlp3 = self.mlp3_5
-                mlp4 = self.mlp4_5
-                mlp5 = self.mlp5_5
-            """
             # for the pair of parts (A, B), A is the query one, A is about the row, A is the former in part_feats
             part_relation = mlp3(input_3.view(batch_size * num_part, num_part, -1)).view(batch_size, num_part,
                                      num_part, -1) # B x P x P x F
@@ -328,7 +286,6 @@ class Network(nn.Module):
     """
 
     def linear_assignment(self, pts, centers1, quats1, centers2, quats2):
-        import random
         pts_to_select = torch.tensor(random.sample([i for i  in range(1000)],100))
         pts = pts[:,pts_to_select] 
         cur_part_cnt = pts.shape[0]

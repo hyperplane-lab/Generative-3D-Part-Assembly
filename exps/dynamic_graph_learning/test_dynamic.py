@@ -1,7 +1,5 @@
 '''
-    for test of the trained model
-    calculate the accuracy on test set
-    v17 the same as v12
+    For test of the trained model
 '''
 import os
 import time

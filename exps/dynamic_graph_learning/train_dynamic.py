@@ -1,5 +1,5 @@
 """
-    training models
+    Training models
 """
 
 import os
@@ -14,7 +14,6 @@ import torch
 import torch.utils.data
 import torch.nn.functional as F
 torch.multiprocessing.set_sharing_strategy('file_system')
-from PIL import Image
 from subprocess import call
 from data_dynamic import PartNetPartDataset
 import utils
@@ -22,7 +21,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(BASE_DIR, '../utils'))
 import render_using_blender as render_utils
 from quaternion import qrot
-import ipdb
 
 
 def train(conf):
@@ -368,7 +366,6 @@ def forward(batch, data_features, network, conf, \
                 gt_center = gt_part_poses[:, :, :3]
 
                 # compute pred_pts and gt_pts
-                # import ipdb; ipdb.set_trace()
                 
                 pred_pts = qrot(pred_part_poses[:, :, 3:].unsqueeze(2).repeat(1, 1, num_point, 1), input_part_pcs) + pred_center.unsqueeze(2).repeat(1, 1, num_point, 1)
                 gt_pts = qrot(gt_part_poses[:, :, 3:].unsqueeze(2).repeat(1, 1, num_point, 1), input_part_pcs) + gt_center.unsqueeze(2).repeat(1, 1, num_point, 1)
@@ -377,7 +374,6 @@ def forward(batch, data_features, network, conf, \
                     fn = 'data-%03d.png' % (batch_ind * batch_size + i)
                     
                     cur_input_part_cnt = input_part_valids[i].sum().item()
-                    #print(cur_input_part_cnt)
                     cur_input_part_cnt = int(cur_input_part_cnt)
                     cur_input_part_pcs = input_part_pcs[i, :cur_input_part_cnt]
                     cur_gt_part_poses = gt_part_poses[i, :cur_input_part_cnt]
@@ -447,7 +443,7 @@ if __name__ == '__main__':
     parser.add_argument('--weight_decay', type=float, default=1e-5)
     parser.add_argument('--lr_decay_by', type=float, default=0.9)
     parser.add_argument('--lr_decay_every', type=float, default=5000)
-    parser.add_argument('--iter', default = 5, help = 'times to iteration')
+    parser.add_argument('--iter', default = 5, type=int, help = 'times to iteration')
 
     # loss weights
     parser.add_argument('--loss_weight_trans_l2', type=float, default=1.0, help='loss weight')

@@ -55,13 +55,11 @@ class PartNetPartDataset(data.Dataset):
         
         cur_contact_data_fn = os.path.join(self.data_dir, 'contact_points/pairs_with_contact_points_%s_level' % shape_id + self.level + '.npy')
         cur_contacts = np.load(cur_contact_data_fn,allow_pickle=True)
-        #cur_contact_list = np.load(cur_contact_list_fn,allow_pickle = True).item()
 
 
         
         
         data_feats = ()
-        # ipdb.set_trace()
         for feat in self.data_features:
         
         
@@ -98,7 +96,6 @@ class PartNetPartDataset(data.Dataset):
                 cur_pts = cur_data['part_pcs']                      # p x N x 3 (p is unknown number of parts for this shape)
                 cur_part_ids = cur_data['geo_part_ids']                 # p
                 cur_num_part = cur_pts.shape[0]
-                # print("part_num:",cur_num_part)
                 if cur_num_part > self.max_num_part:
                     return None         # directly returning a None will let data loader with collate_fn=utils.collate_fn_with_none to ignore this data item
                 out = np.zeros((self.max_num_part, cur_pts.shape[1], 3), dtype=np.float32)
@@ -153,7 +150,6 @@ class PartNetPartDataset(data.Dataset):
                 data_feats = data_feats + (out,)
             
             elif feat == 'match_ids':
-                # ipdb.set_trace()
                 cur_part_ids = cur_data['geo_part_ids']
                 cur_num_part = cur_pose.shape[0]
                 if cur_num_part > self.max_num_part:
@@ -176,67 +172,3 @@ class PartNetPartDataset(data.Dataset):
                 raise ValueError('ERROR: unknown feat type %s!' % feat)
 
         return data_feats
-# for test:
-
-# def getitem():
-#     # shape_id = self.data[index]
-#     shape_id = 11111
-#     data_dir = "./data/partnet_dataset/"
-#     max_num_part = 10
-#     data_features = ['part_pcs','part_poses','part_valids']
-#     cur_data_fn = os.path.join(data_dir, '%s.npy' % shape_id)
-#     cur_data = np.load(cur_data_fn, allow_pickle=True ).item()     # assume data is stored in seperate .npz file
-#     # import ipdb; ipdb.set_trace(
-#     data_feats = ()
-#     for feat in data_features:
-#         if feat == 'part_pcs':
-#             cur_pts = cur_data['part_pcs']                      # p x N x 3 (p is unknown number of parts for this shape)
-#             cur_num_part = cur_pts.shape[0]
-#             if cur_num_part > max_num_part:
-#                 return None         # directly returning a None will let data loader with collate_fn=utils.collate_fn_with_none to ignore this data item
-#             out = np.zeros((max_num_part, cur_pts.shape[1], 3), dtype=np.float32)
-#             out[:cur_num_part] = cur_pts
-#             out = torch.from_numpy(out).float().unsqueeze(0)    # 1 x 20 x N x 3
-#             data_feats = data_feats + (out,)
-
-#         elif feat == 'part_poses':
-#             cur_pose = cur_data['part_poses']                   # p x (3 + 4)
-#             cur_num_part = cur_pose.shape[0]
-#             if cur_num_part > max_num_part:
-#                 return None         # directly returning a None will let data loader with collate_fn=utils.collate_fn_with_none to ignore this data item
-#             out = np.zeros((max_num_part, 3 + 4), dtype=np.float32)
-#             out[:cur_num_part] = cur_pose
-#             out = torch.from_numpy(out).float().unsqueeze(0)    # 1 x 20 x (3 + 4)
-#             data_feats = data_feats + (out,)
-
-#         elif feat == 'part_valids':
-#             cur_pose = cur_data['part_poses']                   # p x (3 + 4)
-#             cur_num_part = cur_pose.shape[0]
-#             if cur_num_part > max_num_part:
-#                 return None         # directly returning a None will let data loader with collate_fn=utils.collate_fn_with_none to ignore this data item
-#             out = np.zeros((max_num_part), dtype=np.float32)
-#             out[:cur_num_part] = 1
-#             out = torch.from_numpy(out).float().unsqueeze(0)    # 1 x 20 (return 1 for the first p parts, 0 for the rest)
-#             data_feats = data_feats + (out,)
-        
-#         elif feat == 'shape_id':
-#             data_feats = data_feats + (shape_id,)
-
-#         else:
-#             raise ValueError('ERROR: unknown feat type %s!' % feat)
-#     # print(data_feats.shape)
-#     # import ipdb; ipdb.set_trace()
-
-#     return data_feats
-
-
-# if __name__ == "__main__":
-#     dataset = PartNetPartDataset(category='Chair', data_dir="./data/partnet_dataset/", data_fn="Chair.train.npy", data_features=['part_pcs','part_poses','part_valids'], \
-#             max_num_part=20)
-#     # getitem()
-#     dataloader = DataLoader(dataset, batch_size=2, shuffle=False,
-#                                 num_workers=1, pin_memory=True)
-#     for i, data in enumerate(dataloader):
-#         print(i)
-#         print(data)
-#         ipdb.set_trace()

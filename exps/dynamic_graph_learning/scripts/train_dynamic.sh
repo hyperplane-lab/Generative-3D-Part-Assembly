@@ -18,3 +18,4 @@ CUDA_VISIBLE_DEVICES=1 python ./train_dynamic.py  \
     --batch_size 16 \
     --num_workers 8 \
     --num_batch_every_visu 0 \
+    --iter 7
