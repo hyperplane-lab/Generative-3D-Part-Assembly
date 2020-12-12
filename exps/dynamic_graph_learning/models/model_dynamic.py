@@ -198,23 +198,26 @@ class Network(nn.Module):
         super(Network, self).__init__()
         self.conf = conf
         self.mlp2 = MLP2(conf.feat_len)
-        self.mlp3_1 = MLP3(conf.feat_len)
-        self.mlp3_2 = MLP3(conf.feat_len)
-        self.mlp3_3 = MLP3(conf.feat_len)
-        self.mlp3_4 = MLP3(conf.feat_len)
-        self.mlp3_5 = MLP3(conf.feat_len)
+        self.mlp3s = nn.ModuleList([MLP3(conf.feat_len) for i in range(5)])
+        self.mlp4s = nn.ModuleList([MLP4(conf.feat_len) for i in range(5)])
+        self.mlp5s = nn.ModuleList([MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16) for i in range(5)])
+        #self.mlp3_1 = MLP3(conf.feat_len)
+        #self.mlp3_2 = MLP3(conf.feat_len)
+        #self.mlp3_3 = MLP3(conf.feat_len)
+        #self.mlp3_4 = MLP3(conf.feat_len)
+        #self.mlp3_5 = MLP3(conf.feat_len)
 
-        self.mlp4_1 = MLP4(conf.feat_len) 
-        self.mlp4_2 = MLP4(conf.feat_len) 
-        self.mlp4_3 = MLP4(conf.feat_len) 
-        self.mlp4_4 = MLP4(conf.feat_len) 
-        self.mlp4_5 = MLP4(conf.feat_len) 
+        #self.mlp4_1 = MLP4(conf.feat_len) 
+        #self.mlp4_2 = MLP4(conf.feat_len) 
+        #self.mlp4_3 = MLP4(conf.feat_len) 
+        #self.mlp4_4 = MLP4(conf.feat_len) 
+        #self.mlp4_5 = MLP4(conf.feat_len) 
 
-        self.mlp5_1 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
-        self.mlp5_2 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
-        self.mlp5_3 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
-        self.mlp5_4 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
-        self.mlp5_5 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
+        #self.mlp5_1 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
+        #self.mlp5_2 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
+        #self.mlp5_3 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
+        #self.mlp5_4 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
+        #self.mlp5_5 = MLP5(conf.feat_len * 2 + conf.max_num_part + 7 + 16)
 
         self.relation_predictor = R_Predictor()
         self.relation_predictor_dense = R_Predictor()
@@ -269,26 +272,31 @@ class Network(nn.Module):
                 part_feat1 = part_feats.unsqueeze(2).repeat(1, 1, num_part, 1) # B x P x P x F
                 part_feat2 = part_feats.unsqueeze(1).repeat(1, num_part, 1, 1) # B x P x P x F
             input_3 = torch.cat([part_feat1, part_feat2], dim=-1) # B x P x P x 2F
+            mlp3 = self.mlp3s[iter_ind]
+            mlp4 = self.mlp4s[iter_ind]
+            mlp5 = self.mlp5s[iter_ind]
+            """
             if iter_ind == 0:
-                mlp3 = self.mlp3_1
+            #    mlp3 = self.mlp3_1
                 mlp4 = self.mlp4_1
                 mlp5 = self.mlp5_1
             elif iter_ind == 1:
-                mlp3 = self.mlp3_2
+            #    mlp3 = self.mlp3_2
                 mlp4 = self.mlp4_2
                 mlp5 = self.mlp5_2
             elif iter_ind == 2:
-                mlp3 = self.mlp3_3
+            #    mlp3 = self.mlp3_3
                 mlp4 = self.mlp4_3
                 mlp5 = self.mlp5_3
             elif iter_ind == 3:
-                mlp3 = self.mlp3_4
+            #    mlp3 = self.mlp3_4
                 mlp4 = self.mlp4_4
                 mlp5 = self.mlp5_4
             elif iter_ind == 4:
-                mlp3 = self.mlp3_5
+            #    mlp3 = self.mlp3_5
                 mlp4 = self.mlp4_5
                 mlp5 = self.mlp5_5
+            """
             # for the pair of parts (A, B), A is the query one, A is about the row, A is the former in part_feats
             part_relation = mlp3(input_3.view(batch_size * num_part, num_part, -1)).view(batch_size, num_part,
                                      num_part, -1) # B x P x P x F

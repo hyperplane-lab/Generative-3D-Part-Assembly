@@ -1,13 +1,5 @@
 """
-    add same class list:
-    is a list, the first layer is batch, the second is class member, for example: same_class_list[1][16] means the 2nd batch and class 16's members
-	train-v18
-    v3: train for 3 iter backwards
-    and
-    v6: not share weights for mlp3 and mlp4
-    use shape loss for training
-    based on v12
-    using data v12
+    training models
 """
 
 import os
