@@ -352,13 +352,6 @@ def forward(batch, data_features, network, conf, \
                 )
             conf.flog.flush()
 
-        # # log to tensorboard
-        # if log_tb and tb_writer is not None:
-        #     tb_writer.add_scalar('trans_l2_loss', trans_l2_loss.item(), step)
-        #     tb_writer.add_scalar('rot_l2_loss', rot_l2_loss.item(), step)
-        #     tb_writer.add_scalar('rot_cd_loss', rot_cd_loss.item(), step)
-        #     tb_writer.add_scalar('lr', lr, step)
-
         # gen visu
         if is_val and (not conf.no_visu) and epoch % conf.num_epoch_every_visu == conf.num_epoch_every_visu - 1:
             visu_dir = os.path.join(conf.exp_dir, 'val_visu')
@@ -368,6 +361,7 @@ def forward(batch, data_features, network, conf, \
             pred_assembly_dir = os.path.join(out_dir, 'pred_assembly')
             info_dir = os.path.join(out_dir, 'info')
 
+            
             if batch_ind == 0:
                 # create folders
                 os.mkdir(out_dir)
@@ -445,7 +439,7 @@ if __name__ == '__main__':
     parser.add_argument('--seed', type=int, default=3124256514, help='random seed (for reproducibility) [specify -1 means to generate a random one]')
     #parser.add_argument('--seed', type=int, default=-1, help='random seed (for reproducibility) [specify -1 means to generate a random one]')
     parser.add_argument('--log_dir', type=str, default='logs', help='exp logs directory')
-    parser.add_argument('--data_dir', type=str, default='../../prepare_data', help='data directory')
+    parser.add_argument('--data_dir', type=str, default='../../prep_data', help='data directory')
     parser.add_argument('--overwrite', action='store_true', default=False, help='overwrite if exp_dir exists [default: False]')
     parser.add_argument('--level',type=str,default='3',help='level of dataset')
 
@@ -492,6 +486,8 @@ if __name__ == '__main__':
     
     # mkdir exp_dir; ask for overwrite if necessary
     conf.exp_dir = os.path.join(conf.log_dir, conf.exp_name)
+    if not os.path.exists(conf.log_dir):
+       os.mkdir(conf.log_dir) 
     if os.path.exists(conf.exp_dir):
         if not conf.overwrite:
             response = input('A training run named "%s" already exists, overwrite? (y/n) ' % conf.exp_name)

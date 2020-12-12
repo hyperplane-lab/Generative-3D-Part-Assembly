@@ -1,26 +1,12 @@
 """
-    Scene Graph to predict the pose of each part
-    adjust relation using the t in last iteration
-    model v30: based on v18
-    model v18: the same as v12
-    model v12:
-
-    model_v3: iter backwards.
-    and 
-    model v6: not share weights.
-    and 
-    model v9: replace mlp4 as GRU
-    
-    with local info
-
-    Input:
-        relation matrxi of parts,part valids, part point clouds, instance label, iter_ind, pred_part_poses:      B x P x P, B x P, B x P x N x 3, B x P x P , (1 or 2 or 3) , B x P x 7
-    Output:
-        R and T:                B x P x (3 + 4)
-    Losses:
-        Center L2 Loss, Rotation L2 Loss, Rotation Chamder-Distance Loss
-    Setting 1:
-        when passing MLP5, global feature is not explicitly concatted
+    Model to predict pose
+    Input of Network:
+        part_pcs: part point clouds
+        part_valids: identify if parts exist
+        instance label: identify geometry-equivalent part 
+        class label: used for aggeration
+    Output of Network:
+        a list of prediction of all iterations 
 """
 
 import numpy as np
@@ -150,26 +136,6 @@ class MLP4(nn.Module):
         return x
 
 
-class GRU(nn.Module):
-    def __init__(self, feat_len, num_layer):
-        super(GRU, self).__init__()
-
-        self.rnn = nn.GRU(2 * feat_len, feat_len, num_layer)
-
-    """
-        Input: B x P x (F + F), num_layer x B x F
-        Output: B x P x F
-    """
-
-    def forward(self, x, h0):
-        num_part = x.shape[1]
-        batch_size = x.shape[0]
-
-        x = x.view(1, batch_size * num_part, -1)
-        output, hn = self.rnn(x, h0)
-        output = output.view(batch_size, num_part, -1)
-
-        return output, hn
 
 
 
@@ -584,4 +550,3 @@ class Network(nn.Module):
 
         #print(count, total_num)
         return contact_point_loss, count, total_num
-
