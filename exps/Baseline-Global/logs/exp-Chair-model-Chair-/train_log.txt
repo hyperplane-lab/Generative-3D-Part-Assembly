@@ -1,0 +1,37 @@
+./train.py --exp_suffix  --model_version model --category Chair --train_data_fn Chair.train.npy --val_data_fn Chair.val.npy --loss_weight_trans_l2 1.0 --loss_weight_rot_l2 0.0 --loss_weight_rot_cd 10 --device cuda:0 --num_epoch_every_visu 99 --level 3 --overwrite --batch_size 16 --num_workers 8 --num_batch_every_visu 0
+
+Random Seed: 3124256514
+Using device: cuda:0
+
+[PartNetPartDataset Chair 4489] data_dir: ../../prepare_data/, data_fn: Chair.train.npy, max_num_part: 20
+[PartNetPartDataset Chair 617] data_dir: ../../prepare_data/, data_fn: Chair.val.npy, max_num_part: 20
+
+Network(
+  (ae_encoder): ae_Encoder(
+    (conv1): Conv1d(3, 64, kernel_size=(1,), stride=(1,))
+    (conv2): Conv1d(64, 64, kernel_size=(1,), stride=(1,))
+    (conv3): Conv1d(64, 64, kernel_size=(1,), stride=(1,))
+    (conv4): Conv1d(64, 128, kernel_size=(1,), stride=(1,))
+    (conv5): Conv1d(128, 128, kernel_size=(1,), stride=(1,))
+    (bn1): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (bn2): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (bn3): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (bn4): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (bn5): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (pose_decoder): PoseDecoder(
+    (fc1): Linear(in_features=144, out_features=256, bias=True)
+    (fc2): Linear(in_features=256, out_features=128, bias=True)
+    (trans): Linear(in_features=128, out_features=60, bias=True)
+    (quat): Linear(in_features=128, out_features=80, bias=True)
+    (bn1): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (bn2): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
+
+training run exp-Chair-model-Chair-
+     Time    Epoch     Dataset    Iteration    Progress(%)       LR    TransL2Loss    RotL2Loss   RotCDLoss   TotalLoss
+ 00:00:02     0/1000    train        0/280         0.0%      1.00E-03    0.51339      0.16453      0.05965     0.04920     1.14251  
+Saving checkpoint ...... 
+DONE
+ 00:00:03     0/1000     val         0/38          0.0%      1.00E-03    0.36370      0.16833      0.05806     0.07584     1.01395  
